@@ -49,7 +49,7 @@ function Header() {
             <div className='header-right'>
                 <div className='header-info'>
                     <Avatar />
-                    <h4>Tosinnijis</h4>
+                    <h4>Seth MoonCatcher</h4>
                 </div>
 
                 <IconButton>
