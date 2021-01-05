@@ -83,3 +83,26 @@
 
 // Header Ends here
 
+// Sidebar starts here
+
+.sidebarRow {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+
+    h4 {
+        margin-left: 20px;
+        font-weight: 600;
+    }
+
+    .MuiSvgIcon-root {
+        font-size: xx-large;
+        color: #2e81f4;
+    }
+}
+
+.sidebarRow:hover {
+    background: lightgray;
+    border-radius: 10px;
+}
