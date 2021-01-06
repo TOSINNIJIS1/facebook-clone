@@ -6,7 +6,7 @@ import { useStateValue } from '../provider/stateProvider';
 
 
 function Sidebar() {
-    const [{user}, dispatch] = useStateValue()
+    const [ {user} ] = useStateValue()
     return (
         <div className='sidebar'>
             <SidebarRow 

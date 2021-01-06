@@ -9,7 +9,7 @@ import { useStateValue } from "./provider/stateProvider";
 
 function App() {
 
-  const [ user, dispatch] = useStateValue();
+  const [ user ] = useStateValue();
 
   return (
       <div className='app'>
