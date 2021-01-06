@@ -13,7 +13,7 @@ function Posts({ profilePic, img, username, timestamp, message }) {
 
                 <div className='post_topInfo'>
                     <h3> {username} </h3>
-                    <p> {timestamp} </p> 
+                    <p> {new Date(timestamp?.toDate()).toUTCString()} </p> 
                 </div>
             </div>
 

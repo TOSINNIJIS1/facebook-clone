@@ -2,9 +2,13 @@ import React from 'react';
 import '../style/style.scss';
 import {SubscriptionsOutlined, Flag, Home, Search, StorefrontOutlined, SupervisedUserCircle, Add, Forum, NotificationsActive, ExpandMore} from '@material-ui/icons';
 import { Avatar, IconButton } from '@material-ui/core';
+import { useStateValue } from '../provider/stateProvider';
 
 
 function Header() {
+    
+    const [{user}, dispatch] = useStateValue()
+
     return (
         <div className='header'>
             <div className='header-left'>
@@ -48,8 +52,8 @@ function Header() {
 
             <div className='header-right'>
                 <div className='header-info'>
-                    <Avatar />
-                    <h4>Seth MoonCatcher</h4>
+                    <Avatar src={user.photoURL}/>
+                    <h4>{user.displayName}</h4>
                 </div>
 
                 <IconButton>

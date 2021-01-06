@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import { Avatar } from '@material-ui/core';
 import { InsertEmoticon, PhotoLibrary, Videocam } from '@material-ui/icons';
 import '../style/style.scss'
+import { useStateValue } from '../provider/stateProvider';
+import database from '../firebase/firebase';
+import firebase from 'firebase'
 
 
 function PostsInfo () {
+
+    const [{user}] = useStateValue()
 
     const [input, setInput] = useState('');
     const [imgUrl, setImgUrl] = useState('');
@@ -12,6 +17,15 @@ function PostsInfo () {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+
+        database.collection('posts').add({
+            message: input,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            profilePic: user.photoURL,
+            username: user.displayName,
+            img: imgUrl
+
+        })
     
     
         setInput('');
@@ -22,20 +36,20 @@ function PostsInfo () {
     return (
         <div className='postsInfo'>
             <div className='postsInfo_top'>
-                <Avatar />
+                <Avatar src={user.photoURL} />
                 <form>
                     <input 
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     className='postsInfo_input'
-                    placeholder="What's on your mind"
+                    placeholder={`What's on your mind ${user.displayName}`}
                     />
 
                     <input 
                     value={imgUrl}
                     onChange={(e) => setImgUrl(e.target.value)}
-                    placeholder='image URL (Optional)' 
-
+                    placeholder='image URL (Optional)'
+                    accept=".jpg, .jpeg, .png"
                     />
                     <button onClick={handleSubmit} type='submit'> Hidden Submit </button>
                 </form>
